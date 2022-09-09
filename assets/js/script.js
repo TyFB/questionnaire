@@ -1,84 +1,106 @@
+
+// setting variables
+var i = 0;
+var j = 0;
+var correctAnswer = 0;
 var startQuiz = function () {
-    for (var i = 0; i < quizInfo.length; i++) {
-        if (time > 75){
-        var quizI = quizInfo[i]
-        document.getElementById("questions").innerHTML = 
-        '<h1>' + quizI.question + '</h1>' + "<button>" + quizI.answers1 + "</button>" + '<button>' + quizI.answers2 + '</button>' + "<button>" + quizI.answers3 + "</button>" + '<button>' + quizI.answers4 + '</button>';
+
+    var quizI = quizInfo[i]
+    document.getElementById("questions").innerHTML =
+        '<h1>' + quizI.question + '</h1>' + "<button id=choices>" + quizI.answers[j] + "</button>" + "<button id=choices>" + quizI.answers[j + 1] + "</button>" + "<button id=choices>" + quizI.answers[j + 2] + "</button>" + "<button id=choices>" + quizI.answers[j + 3] + "</button>";
+    var nextQue = document.getElementById("choices")
+
+    nextQue.onclick = function () {
+        if (i > quizInfo.length - 1) {
+            i = 0;
         }
-    }
-    var time = document.getElementById("timer").innerHTML="75";
+        startQuiz(i);
+        i++
+    };
 };
+
+// array for the quiz to use
 var quizInfo = [
     {
         question: "Which of the following methods is used to access HTML elements using Javascript?",
-        answers1: "1. getElementId()",
-        answers2: "2. getElementById()",
-        answers3: "3. getElementsByClassName()",
-        answers4: "4. Both 2 and 3"
+        answers: ["getElementId()",
+            "getElementById()",
+            "getElementsByClassName()",
+            "Both 2 and 3"],
+        correctAnswer: 4
     },
     {
         question: "When the switch statement matches the expression with the given labels, how is the comparison done?",
-        answers1: "1. Both the datatype and the result of the expression are compared.",
-        answers2: "2. Only the datatype of the expression is compared.",
-        answers3: "3. Only the value of the expression is compared.",
-        answers4: "4. None of the above."
+        answers: ["Both the datatype and the result of the expression are compared.",
+            "Only the datatype of the expression is compared.",
+            "Only the value of the expression is compared.",
+            "None of the above."],
+        correctAnswer: 1
     },
     {
         question: "What does the 'toLocateString()' method do in JS?",
-        answers1: "Returns a localised object representation.",
-        answers2: "Returns a parsed string.",
-        answers3: "Returns a localized string representation of an object.",
-        answers4: "None of the above."
+        answers: ["Returns a localised object representation.",
+            "Returns a parsed string.",
+            "Returns a localized string representation of an object.",
+            "None of the above."],
+        correctAnswer: 3
     },
     {
         question: "The 3 basic object attributes in Javascript are:",
-        answers1: "Class, prototype, objects' parameters.",
-        answers2: "Class, prototype, objects' extensible flag.",
-        answers3: "Class, parameters, objects' extensible flag.",
-        answers4: "Classes, Native object, and Interfaces and Object's extensible flag."
+        answers: ["Class, prototype, objects' parameters.",
+            "Class, prototype, objects' extensible flag.",
+            "Class, parameters, objects' extensible flag.",
+            "Classes, Native object, and Interfaces and Object's extensible flag."],
+        correctAnswer: [2, 4]
     },
     {
         question: "Which of the following are closures in Javascript?",
-        answers1: "Variables",
-        answers2: "Functions",
-        answers3: "Objects",
-        answers4: "All of the above"
+        answers: ["Variables",
+            "Functions",
+            "Objects",
+            "All of the above"],
+        correctAnswer: 4
     },
     {
         question: "What keyword is used to declare an asynchronous function in Javascript?",
-        answers1: "async",
-        answers2: "await",
-        answers3: "setTimeout",
-        answers4: "None of the above"
+        answers: ["async",
+            "await",
+            "setTimeout",
+            "None of the above"],
+        correctAnswer: 1
     },
     {
         question: "How to stop an interval timer in Javascript?",
-        answers1: "intervalOver",
-        answers2: "clearTimer",
-        answers3: "clearInterval",
-        answers4: "Cleartime"
+        answers: ["intervalOver",
+            "clearTimer",
+            "clearInterval",
+            "Cleartime"],
+        correctAnswer: 3
     },
     {
         question: "How do we write a comment in javascript?",
-        answers1: "/* */",
-        answers2: "//",
-        answers3: "#",
-        answers4: "&&"
+        answers: ["/* */",
+            "//",
+            "#",
+            "&&"],
+        correctAnswer: 2
     },
     {
         question: "Which of the following are not server-side Javascript objects?",
-        answers1: "Date",
-        answers2: "FileUpload",
-        answers3: "Function",
-        answers4: "All of the above"
+        answers: ["Date",
+            "FileUpload",
+            "Function",
+            "All of the above"],
+        correctAnswer: 4
     },
     {
         question: "Which object in Javascript doesn't have a prototype?",
-        answers1: "Base Object",
-        answers2: "All objects have a prototype",
-        answers3: "None of the objects have a prototype",
-        answers4: "None of the above"
+        answers: ["Base Object",
+            "All objects have a prototype",
+            "None of the objects have a prototype",
+            "None of the above"],
+        correctAnswer: 1
     }
-]
+];
 var startBtn = document.querySelector("#start")
 startBtn.addEventListener("click", startQuiz)
