@@ -6,9 +6,9 @@ var i = 0;
 var j = 0;
 //var correctAnswer = 0;
     var quizI = quizInfo[i];
+    // sets everything in place but only recognizes the first answer as a viable choice to move through array
     document.getElementById("questions").innerHTML =
         '<h1>' + quizI.question + '</h1>' + "<button id=choices>" + quizI.answers[j] + "</button>" + '<button id=choices>' + quizI.answers[j + 1] + '</button>' + "<button id=choices>" + quizI.answers[j + 2] + "</button>" + '<button id=choices>' + quizI.answers[j + 3] + '</button>';
-
     // function to go through array
     var nextQue = function () {
         if (i > quizInfo.length - 1) {
@@ -21,7 +21,7 @@ var j = 0;
     next.addEventListener("click", nextQue);
     console.log(next);
 };
-
+// this is where my setInterval/setTimeout for my timer would go
 // array for the quiz to use
 var quizInfo = [
     {
@@ -105,5 +105,5 @@ var quizInfo = [
         correctAnswer: 0
     }
 ];
-var startBtn = document.querySelector("#start")
+var startBtn = document.querySelector("#choices")
 startBtn.addEventListener("click", startQuiz)
